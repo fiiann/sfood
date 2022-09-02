@@ -82,20 +82,30 @@ class DetailFoodPage extends StatelessWidget {
                             //     builder: (BuildContext c, data)){
                             //
                             // },
-                            TombolIcon(
-                              icon: CupertinoIcons.heart_solid,
-                              onClick: () {
-                                FoodsTableData data = FoodsTableData(
-                                    idFood: int.parse(meal.idMeal!),
-                                    category: meal.strCategory!,
-                                    image: meal.strMealThumb!,
-                                    area: meal.strArea!,
-                                    nameFood: meal.strMeal!
+                            Row(
+                              children: [
+                                TombolIcon(
+                                  icon: CupertinoIcons.minus,
+                                  onClick: () {
+                                    return favCubit.deleteFav(int.parse(meal.idMeal!));
+                                  },
+                                ),
+                                const SizedBox(width: 5,),
+                                TombolIcon(
+                                  icon: CupertinoIcons.heart_solid,
+                                  onClick: () {
+                                    FoodsTableData data = FoodsTableData(
+                                        idFood: int.parse(meal.idMeal!),
+                                        category: meal.strCategory!,
+                                        image: meal.strMealThumb!,
+                                        area: meal.strArea!,
+                                        nameFood: meal.strMeal!
 
-                                );
-                                return favCubit.addToFav(data);
-                                // return favCubit.deleteFav(int.parse(meal.idMeal!));
-                              },
+                                    );
+                                    return favCubit.addToFav(data);
+                                  },
+                                ),
+                              ],
                             ),
                           ],
                         ),
